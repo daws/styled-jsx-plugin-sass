@@ -3,10 +3,10 @@ const path = require('path');
 
 module.exports = (css, settings) => {
   const cssWithPlaceholders = css
-    .replace(/%%styled-jsx-placeholder-(\d+)%%%(\w*\s*[),;!{])/g, (_, id, p1) =>
+    .replace(/%%styled-jsx-placeholder-(\d+)%%%(\w*\s*[),;!{}])/g, (_, id, p1) =>
       `styled-jsx-percent-placeholder-${id}-${p1}`
     )
-    .replace(/%%styled-jsx-placeholder-(\d+)%%(\w*\s*[),;!{])/g, (_, id, p1) =>
+    .replace(/%%styled-jsx-placeholder-(\d+)%%(\w*\s*[),;!{}])/g, (_, id, p1) =>
       `styled-jsx-placeholder-${id}-${p1}`
     )
     .replace(/%%styled-jsx-placeholder-(\d+)%%%/g, (_, id) =>
@@ -28,10 +28,10 @@ module.exports = (css, settings) => {
     )).css.toString()
 
   return preprocessed
-    .replace(/styled-jsx-percent-placeholder-(\d+)-(\w*\s*[),;!{])/g, (_, id, p1) =>
+    .replace(/styled-jsx-percent-placeholder-(\d+)-(\w*\s*[),;!{}])/g, (_, id, p1) =>
       `%%styled-jsx-placeholder-${id}%%%${p1}`
     )
-    .replace(/styled-jsx-placeholder-(\d+)-(\w*\s*[),;!{])/g, (_, id, p1) =>
+    .replace(/styled-jsx-placeholder-(\d+)-(\w*\s*[),;!{}])/g, (_, id, p1) =>
       `%%styled-jsx-placeholder-${id}%%${p1}`
     )
     .replace(/\/\*%%styled-jsx-percent-placeholder-(\d+)%%\*\//g, (_, id) =>
